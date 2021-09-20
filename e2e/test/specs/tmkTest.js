@@ -5,7 +5,7 @@ module.exports = {
     browser.page.userPage().loginAndVisitPage(browser);
   },
 
-  "Verify user is able to Navigate to User Page successfully and validate Total User page by default": (browser) => {
+  "Verify user is able to Navigate to User Page successfully and validate all the attributes on Total User page": (browser) => {
     browser.page.userPage().verifySuccessfullNavigationToUserPage();
   },
 
@@ -13,7 +13,7 @@ module.exports = {
     //const InviteUserObj = browser.page.inviteUser()
     //InviteUserObj.verifySuccessfullSendInvitation()
   },
-  "Verify user is able to Navigate to Role Page successfully and validate Role Management page by default": (browser) => {
+  "Verify user is able to Navigate to Role Page successfully and validate all the attributes on Role Management page": (browser) => {
     const RolePgeObj = browser.page.rolePage();
     RolePgeObj.verifySuccessfullNavigationToRolePage();
   },
