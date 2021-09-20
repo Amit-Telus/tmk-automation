@@ -1,6 +1,6 @@
 const config = require("../config");
 const url = `${config.baseUrl}`;
-const email='AutomationTestscript3@telus.com'
+const email='AutomationUser@telus.com'
 module.exports = {
     url,
     elements: {
@@ -64,8 +64,8 @@ inviteMSG: {
             return this.waitForElementPresent("@emailField")
                 .assert.elementPresent("@emailField")
                 .click("@emailField")
-                .setValue("@emailField", email)
-                .pause(3000);
+                .setValue("@emailField", 'AutomationUser'+(Math.floor(Math.random() * 6000))+'@telus.com')
+                .pause(3000)      
         },
         selectRoleFromDropdown() {
           return this.waitForElementPresent("@roleField")

@@ -1,17 +1,9 @@
 const config = require("../config");
 const url = `${config.baseUrl}`;
-const role = "TELUS Automation Test3";
+const role = "AutomationRole";
 module.exports = {
   url,
   elements: {
-    manageMod: {
-      locateStrategy: "xpath",
-      selector: '//a[contains(@href,"/en/bc/manage")]',
-    },
-    roleOption: {
-      locateStrategy: "xpath",
-      selector: '//div[contains(text(),"Role")]',
-    },
     createRole: {
       locateStrategy: "xpath",
       selector: '//span[@class="Button__ButtonTextWrapper-sa7xo3-1 gbpwM"]',
@@ -62,115 +54,77 @@ module.exports = {
       locateStrategy: "xpath",
       selector: '//*[text()="Role has been created Successfully"]',
     },
+    closeBtn: {
+      locateStrategy: "xpath",
+      selector: '(//*[@class="Button__ButtonTextWrapper-sa7xo3-1 gbpwM"])[2]',
+    },
   },
   commands: [
     {
-      clickOnManageSection() {
-        return this.waitForElementPresent("@manageMod")
-          .assert.elementPresent("@manageMod")
-          .click("@manageMod")
-          .pause(2000);
-      },
-      clickOnRole() {
-        return this.waitForElementPresent("@roleOption")
-          .assert.elementPresent("@roleOption")
-          .click("@roleOption")
-          .pause(2000);
-      },
-
       clickOnCreateRoleCTA() {
-        return this.waitForElementPresent("@createRole")
+        return this.waitForElementVisible("@createRole")
           .assert.elementPresent("@createRole")
           .click("@createRole")
           .pause(2000);
       },
       enterRoleName() {
-        return this.waitForElementPresent("@roleNameFiled")
+        return this.waitForElementVisible("@roleNameFiled")
           .assert.elementPresent("@roleNameFiled")
           .click("@roleNameFiled")
-          .setValue("@roleNameFiled", role)
+          .setValue("@roleNameFiled", role+(Math.floor(Math.random() * 6000)))
           .pause(3000);
       },
       clickOnCapabltySelector() {
         return (
-          this.waitForElementPresent("@capabltyField")
+          this.waitForElementVisible("@capabltyField")
             // .assert.elementPresent("@capabltyField")
             .pause(3000)
             .click("@capabltyField")
         );
       },
-      selectLiveStrm(browser) {
-        this.waitForElementPresent("@liveStrmChkbx")
-          //.assert.elementPresent("@liveStrmChkbx")
-          .pause(2000);
-        browser.execute("scrollTo(0,1000)");
-        this.click("@liveStrmChkbx");
+      selectCapabilities(browser) {
+        this
+        .waitForElementVisible("@liveStrmChkbx")
+        .click("@liveStrmChkbx")
+        .click("@monitorChkbx")
+        .click("@recordngChkbx")
+        .click("@reportsChkbx")
+        .click("@usersChkbx")
+        .click("@rolesChkbx")
+        .click("@orgChkbx")
         return this;
       },
-      selectMonitor() {
-        return (
-          this.waitForElementPresent("@monitorChkbx")
-            //.assert.elementPresent("@monitorChkbx")
-            .click("@monitorChkbx")
-            .pause(1000)
-        );
-      },
-      selectRecording() {
-        return this.waitForElementPresent("@recordngChkbx")
-          .assert.elementPresent("@recordngChkbx")
-          .click("@recordngChkbx")
-          .pause(2000);
-      },
-      selectReports() {
-        return this.waitForElementPresent("@reportsChkbx")
-          .assert.elementPresent("@reportsChkbx")
-          .click("@reportsChkbx")
-          .pause(2000);
-      },
-      selectUsers() {
-        return this.waitForElementPresent("@usersChkbx")
-          .assert.elementPresent("@usersChkbx")
-          .click("@usersChkbx")
-          .pause(2000);
-      },
-      selectRole() {
-        return this.waitForElementPresent("@rolesChkbx")
-          .assert.elementPresent("@rolesChkbx")
-          .click("@rolesChkbx")
-          .pause(2000);
-      },
-      selectOrg() {
-        return this.waitForElementPresent("@orgChkbx")
-          .assert.elementPresent("@orgChkbx")
-          .click("@orgChkbx")
-          .pause(2000);
-      },
       clickOnCreateRoleBtn() {
-        return this.waitForElementPresent("@createBtn")
+        return this.waitForElementVisible("@createBtn")
           .assert.elementPresent("@createBtn")
           .click("@createBtn")
-          .pause(6000);
+          
       },
       validateConfirmationMsg() {
         return this.waitForElementPresent("@CnfrmMsg")
           .assert.elementPresent("@CnfrmMsg")
-          .click("@CnfrmMsg")
-          .pause(2000);
+          .getText('@CnfrmMsg', (result) => {
+            console.log(result.value);
+          })
+          
         },
-        verifySuccessfullCreationOfRole() {
+        closeCreateRoleWindow() {
+          return this.waitForElementVisible("@closeBtn")
+              .assert.elementPresent("@closeBtn")
+              .click("@closeBtn")
+              .pause(2000);
+
+        },
+        
+        verifySuccessfullCreationOfRole(browser) {
           return this
           .clickOnCreateRoleCTA()
           .enterRoleName()
           .clickOnCapabltySelector()
-          .selectLiveStrm()
-          .selectMonitor()
-          .selectRecording()
-          .selectReports()
-          .selectUsers()
-          .selectRole()
-          .selectOrg()
+          .selectCapabilities(browser)
           .clickOnCreateRoleBtn()
           .validateConfirmationMsg()
+          .closeCreateRoleWindow() 
         },
     },
   ],

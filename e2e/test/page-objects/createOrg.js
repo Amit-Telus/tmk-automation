@@ -1,6 +1,6 @@
 const config = require("../config");
 const url = `${config.baseUrl}`;
-const Org='Automation Dummy Org1'
+const Org='AutomationOrg'
 const Email='AutomationTestscript@telus.com'
 const ApiURL='http://apiurl.com'
 const ApiKey='ED7iQd:ZkVlUG9TNFRaNEd6dzYwS3VrMU9ZaFMySEh4alNHZmQ6YzlmMjVjOWItZGUxOC00MmQ1LTg0MjEtMjRiY2ViMzI4Zjhl'
@@ -10,14 +10,6 @@ const SecretToken='Dummy token'
 module.exports = {
   url,
   elements: {
-    manageMod: {
-      locateStrategy: "xpath",
-      selector: '//a[contains(@href,"/en/bc/manage")]',
-    },
-    orgOption: {
-      locateStrategy: "xpath",
-      selector: '//div[contains(text(),"Organisation")]',
-    },
     createOrg: {
       locateStrategy: "xpath",
       selector: '//span[@class="Button__ButtonTextWrapper-sa7xo3-1 gbpwM"]',
@@ -62,68 +54,69 @@ module.exports = {
   commands: [
     {
       clickOnCreateOrgnstn() {
-        return this.waitForElementPresent("@createOrg")
+        return this.waitForElementVisible("@createOrg")
           .assert.elementPresent("@createOrg")
           .click("@createOrg")
           .pause(2000);
       },
       enterOrgName() {
-        return this.waitForElementPresent("@orgNameFiled")
+        return this.waitForElementVisible("@orgNameFiled")
           .assert.elementPresent("@orgNameFiled")
           .click("@orgNameFiled")
-          .setValue("@orgNameFiled", Org)
+          .setValue("@orgNameFiled", Org+(Math.floor(Math.random() * 6000)))
           .pause(2000);
       },
       selectOwner() {
-        return this.waitForElementPresent("@ownerFiled")
+        return this.waitForElementVisible("@ownerFiled")
           .assert.elementPresent("@ownerFiled")
           .click("@ownerFiled")
           .pause(2000);
       },
       enterEmailId() {
-        return this.waitForElementPresent("@ownerEmailFiled")
+        return this.waitForElementVisible("@ownerEmailFiled")
           .assert.elementPresent("@ownerEmailFiled")
           .click("@ownerEmailFiled")
           .setValue("@ownerEmailFiled", Email)
           .pause(2000);
       },
       enterApiURL() {
-        return this.waitForElementPresent("@apiUrl")
+        return this.waitForElementVisible("@apiUrl")
           .assert.elementPresent("@apiUrl")
           .click("@apiUrl")
           .setValue("@apiUrl", ApiURL)
           .pause(2000);
       },
       enterApiKey() {
-        return this.waitForElementPresent("@apiKey")
+        return this.waitForElementVisible("@apiKey")
           .assert.elementPresent("@apiKey")
           .click("@apiKey")
           .setValue("@apiKey", ApiKey)
           .pause(2000);
       },
       enterBaseCDNPath() {
-        return this.waitForElementPresent("@baseCDNPath")
+        return this.waitForElementVisible("@baseCDNPath")
           .assert.elementPresent("@baseCDNPath")
           .click("@baseCDNPath")
           .setValue("@baseCDNPath", CDNPath)
           .pause(2000);
       },
       enterSecretToken() {
-        return this.waitForElementPresent("@secretToken")
+        return this.waitForElementVisible("@secretToken")
           .assert.elementPresent("@secretToken")
           .click("@secretToken")
           .setValue("@secretToken", SecretToken)
           .pause(2000);
       },
       clickOnCreateBtn() {
-        return this.waitForElementPresent("@createBtn")
+        return this.waitForElementVisible("@createBtn")
           .assert.elementPresent("@createBtn")
+          .pause(5000)
           .click("@createBtn")
           .waitForElementPresent("@confrmMSG")
           .getText("@confrmMSG", (result) => {
             console.log(result.value);
           })
-          .pause(2000);
+          
 
       },
       verifySuccessfullCreationOfOrganisation() {

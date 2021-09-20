@@ -69,7 +69,7 @@ module.exports = {
         browser.url(appurl, () => {
           //browser.log(`Visiting Internet Page: ${route}`)
         });
-        browser.windowMaximize().pause(10000).execute("scrollTo(0,3000)");
+        browser.windowMaximize().execute("scrollTo(0,3000)");
         this.waitForElementVisible("@userName")
           .setValue("@userName", config.userName)
           .waitForElementVisible("@password")

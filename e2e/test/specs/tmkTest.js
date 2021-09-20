@@ -10,11 +10,25 @@ module.exports = {
   },
 
   "Verify Invitation sent successfully to a TELUS user": (browser) => {
-    //const InviteUserObj = browser.page.inviteUser()
-    //InviteUserObj.verifySuccessfullSendInvitation()
+    const InviteUserObj = browser.page.inviteUser()
+    InviteUserObj.verifySuccessfullSendInvitation()
   },
   "Verify user is able to Navigate to Role Page successfully and validate all the attributes on Role Management page": (browser) => {
     const RolePgeObj = browser.page.rolePage();
     RolePgeObj.verifySuccessfullNavigationToRolePage();
   },
+  "Verify user is able to create a New Role in TMK Portal": (browser) => {
+    const CreateRoleObj = browser.page.createRole()
+    CreateRoleObj.verifySuccessfullCreationOfRole(browser)
+   },
+
+  "Verify user is able to Navigate to Organisation Page successfully and validate header of the page": (browser) => {
+    const OrgPgeObj = browser.page.orgPage();
+    OrgPgeObj.verifySuccessfullNavigationToOrgnztnPage();
+  },
+
+  "Verify user is able to create a new Organisation": (browser) => {
+    const CreateOrgObj = browser.page.createOrg();
+    CreateOrgObj.verifySuccessfullCreationOfOrganisation();
+},
 };
