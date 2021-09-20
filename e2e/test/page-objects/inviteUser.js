@@ -4,14 +4,6 @@ const email='AutomationTestscript3@telus.com'
 module.exports = {
     url,
     elements: {
-        manageMod: {
-            locateStrategy: "xpath",
-            selector: '//a[contains(@href,"/en/bc/manage")]',
-        },
-        userOption: {
-            locateStrategy: "xpath",
-            selector: '//a[contains(@href,"/en/bc/media-kloud/users")]//div[contains(text(),"Users")]',
-        },
         inviteUser: {
           locateStrategy: "xpath",
           selector: '//button[@data-testid="invite-user"]',
@@ -23,16 +15,16 @@ module.exports = {
 
   //*****Select Role as Telus Superadmin*****//
 
-  roleField: {
-    locateStrategy: "xpath",
-    selector: '//select[@id="role"]/option[@value="1"]',
+      roleField: {
+        locateStrategy: "xpath",
+        selector: '//select[@id="role"]/option[@value="1"]',
 },
 
 //*****Select Organisation as TELUS*****//
 
-organisationField: {
-  locateStrategy: "xpath",
-  selector: '//select[@id="organisation"]/option[@value="1"]',
+      organisationField: {
+        locateStrategy: "xpath",
+        selector: '//select[@id="organisation"]/option[@value="1"]',
 },
 submitBtn: {
   locateStrategy: "xpath",
