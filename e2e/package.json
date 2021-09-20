@@ -1,0 +1,22 @@
+{
+  "name": "telus-media-kloud",
+  "version": "0.1.0",
+  "description": "NightWatch.js end to end tests",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "e2e": "nightwatch --retries ${E2E_RETRIES:-0} -c ./nightwatch.conf.js --reporter ./html-reporter.js",
+    "e2e:headless": "nightwatch --retries ${E2E_RETRIES:-0} -c ./nightwatch.conf.js --env headless --tag local"
+  },
+  "dependencies": {
+    "ajv": "^6.11.0",
+    "chromedriver": "^92.0.1",
+    "nightwatch-html-reporter": "^2.0.6",
+    "randomstring": "^1.1.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "nightwatch": "^1.7.8"
+  }
+}
