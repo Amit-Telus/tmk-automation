@@ -6,7 +6,7 @@ module.exports = {
   elements: {
     createRole: {
       locateStrategy: "xpath",
-      selector: '//span[@class="Button__ButtonTextWrapper-sa7xo3-1 gbpwM"]',
+      selector: '//*[@data-testid="create-user"]',
     },
 
     roleNameFiled: {

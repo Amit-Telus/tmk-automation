@@ -12,7 +12,7 @@ module.exports = {
   elements: {
     createOrg: {
       locateStrategy: "xpath",
-      selector: '//span[@class="Button__ButtonTextWrapper-sa7xo3-1 gbpwM"]',
+      selector: '//*[@data-testid="create-organisation"]',
     },
     orgNameFiled: {
       locateStrategy: "xpath",
@@ -25,10 +25,6 @@ module.exports = {
     ownerEmailFiled: {
       locateStrategy: "xpath",
       selector: '//*[@name="email"]',
-    },
-    apiUrl: {
-      locateStrategy: "xpath",
-      selector: '//*[@name="api_url"]',
     },
     apiKey: {
       locateStrategy: "xpath",
@@ -49,6 +45,10 @@ module.exports = {
     confrmMSG: {
       locateStrategy: "xpath",
       selector: '//*[text()="Organisation has been created successfully."]',
+    },
+    closeBtn: {
+      locateStrategy: "xpath",
+      selector: '//*[@data-testid="close_success_modal"]',
     },
   },
   commands: [
@@ -79,13 +79,6 @@ module.exports = {
           .setValue("@ownerEmailFiled", Email)
           .pause(2000);
       },
-      enterApiURL() {
-        return this.waitForElementVisible("@apiUrl")
-          .assert.elementPresent("@apiUrl")
-          .click("@apiUrl")
-          .setValue("@apiUrl", ApiURL)
-          .pause(2000);
-      },
       enterApiKey() {
         return this.waitForElementVisible("@apiKey")
           .assert.elementPresent("@apiKey")
@@ -108,16 +101,16 @@ module.exports = {
           .pause(2000);
       },
       clickOnCreateBtn() {
-        return this.waitForElementVisible("@createBtn")
+        return this
+        .waitForElementVisible("@createBtn")
           .assert.elementPresent("@createBtn")
-          .pause(5000)
+          .pause(2000)
           .click("@createBtn")
           .waitForElementPresent("@confrmMSG")
           .getText("@confrmMSG", (result) => {
-            console.log(result.value);
+            console.log(result.value)
           })
-          
-
+          .click("@closeBtn")
       },
       verifySuccessfullCreationOfOrganisation() {
         return this
@@ -125,7 +118,6 @@ module.exports = {
         .enterOrgName()
         .selectOwner()
         .enterEmailId()
-        .enterApiURL()
         .enterApiKey()
         .enterBaseCDNPath()
         .enterSecretToken()

@@ -36,8 +36,32 @@ inviteMSG: {
   },
   closeBtn: {
     locateStrategy: "xpath",
-    selector: '(//*[@class="Button__ButtonTextWrapper-sa7xo3-1 gbpwM"])[2]',
+    selector: '//*[@data-testid="close"]',
   },
+  clickOnInvitedTab: {
+    locateStrategy: "xpath",
+    selector: '(//*[text()="Invited"])[1]',
+  },
+  clickResendIcon: {
+    locateStrategy: "xpath",
+    selector: '(//*[@alt="resend Invitation"])[1]',
+  },
+  confrmModal1: {
+    locateStrategy: "xpath",
+    selector: '//*[text()="Are you sure you want to resend welcome invitation?"]',
+  },
+  selectYesOptn: {
+    locateStrategy: "xpath",
+    selector: '//*[text()="Yes"]',
+},
+  confrmModal2: {
+    locateStrategy: "xpath",
+    selector: '//*[text()="Welcome invitation mail has been re-sent successfully."]',
+},
+  closeBtn1:{
+    locateStrategy: "xpath",
+    selector: '//*[@data-testid="close"]',
+},
     },
     commands: [
         {
@@ -87,13 +111,31 @@ inviteMSG: {
           .getText("@inviteMSG", (result) => {
             console.log(result.value);
           })
-          .pause(2000);
+          .waitForElementPresent("@closeBtn")
+          .click("@closeBtn")
   },
-  closeInviteUserWindow() {
-    return this.waitForElementVisible("@closeBtn")
-        .assert.elementPresent("@closeBtn")
-        .click("@closeBtn")
-        .pause(2000);
+  clickOnInvitedTab() {
+    return this.waitForElementVisible("@clickOnInvitedTab")
+        .assert.elementPresent("@clickOnInvitedTab")
+        .click("@clickOnInvitedTab")
+        .pause(2000)
+        .waitForElementPresent("@clickResendIcon")
+        .click("@clickResendIcon")
+        .pause(3000)
+      //   .waitForElementPresent("confrmModal1")
+      //   .getText("@confrmModal1", (result) => {
+      //    console.log(result.value)
+      // })
+      //   .pause(2000)
+        .waitForElementPresent("@selectYesOptn")
+        .click("@selectYesOptn")
+        .waitForElementPresent("@confrmModal2")
+        .pause(2000)
+        .getText("@confrmModal2", (result) => {
+         console.log(result.value)
+      })
+        .waitForElementPresent("@closeBtn1")
+        .click("@closeBtn1")
   },
 
             verifySuccessfullSendInvitation() {
@@ -103,11 +145,9 @@ inviteMSG: {
                     .selectRoleFromDropdown()
                     .selectOrganistnFromDropdown()
                     .clickOnSendInvitationBtn()
-                    .closeInviteUserWindow()
+                    .clickOnInvitedTab()
 
             },
-
-
         },
     ],
 };

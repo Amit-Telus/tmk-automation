@@ -33,13 +33,9 @@ module.exports = {
     },
     orgPageCol5: {
       locateStrategy: "xpath",
-      selector: '//*[text()="API URL"]',
-    },
-    orgPageCol6: {
-      locateStrategy: "xpath",
       selector: '//*[text()="Base CDN path"]',
     },
-    orgPageCol7: {
+    orgPageCol6: {
       locateStrategy: "xpath",
       selector: '//*[text()="Action"]', 
     },
@@ -72,26 +68,17 @@ module.exports = {
             console.log(result.value);
           })
           .assert.elementPresent('@orgPageCol4')
-          .waitForElementVisible('@orgPageCol4')
           .getText("@orgPageCol4", (result) => {
             console.log(result.value);
           })
           .assert.elementPresent('@orgPageCol5')
-          .waitForElementVisible('@orgPageCol5')
           .getText("@orgPageCol5", (result) => {
             console.log(result.value);
           })
           .assert.elementPresent('@orgPageCol6')
-          .waitForElementVisible('@orgPageCol6')
           .getText("@orgPageCol6", (result) => {
             console.log(result.value);
           })
-          .assert.elementPresent('@orgPageCol7')
-          .waitForElementVisible('@orgPageCol7')
-          .getText("@orgPageCol7", (result) => {
-            console.log(result.value);
-          })
-
       },
       verifySuccessfullNavigationToOrgnztnPage() {
         return this

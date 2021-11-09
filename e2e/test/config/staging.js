@@ -1,5 +1,5 @@
 module.exports = {
-  baseUrl: "https://margaret:hamilton1936@www.wcstage.telus.com/en/bc",
-  userName: "",
-  password: ""
+  baseUrl: "https://grace9:Hopper8714@www.wcstage.telus.com/en/bc",
+  userName: "x227719",
+  password: "Xavient@2021"
 };

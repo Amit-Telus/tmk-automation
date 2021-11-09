@@ -10,7 +10,7 @@ module.exports = {
     userOption: {
       locateStrategy: "xpath",
       selector:
-        '//a[contains(@href,"/en/bc/media-kloud/users")]//div[contains(text(),"Users")]',
+        '//div[contains(text(),"Users")]',
     },
     userName: {
       selector: '[id="username"]',
@@ -32,39 +32,45 @@ module.exports = {
     },
     userPageCol1: {
       locateStrategy: "xpath",
-      selector: '//*[text()="First Name"]',
+      selector: '//*[text()="Name"]',
     },
     userPageCol2: {
       locateStrategy: "xpath",
-      selector: '//*[text()="Last Name"]',
+      selector: '//*[text()="Email ID"]',
     },
     userPageCol3: {
       locateStrategy: "xpath",
-      selector: '//*[text()="Email ID"]',
+      selector: '//*[text()="Status"]',
     },
     userPageCol4: {
       locateStrategy: "xpath",
-      selector: '//*[text()="Status"]',
+      selector: '//*[text()="Account(s)"]',
     },
     userPageCol5: {
       locateStrategy: "xpath",
-      selector: '//*[text()="Created On"]',
-    },
-    userPageCol6: {
-      locateStrategy: "xpath",
       selector: '//*[text()="Action"]',
+    },
+    totalSection: {
+      locateStrategy: "xpath",
+      selector: '//*[text()="Total"]',
+    },
+    actvSection: {
+      locateStrategy: "xpath",
+      selector: '//*[text()="Active"]',
+    },
+    inactvSection: {
+      locateStrategy: "xpath",
+      selector: '//*[text()="Inactive"]',
+    },
+    invitedSection: {
+      locateStrategy: "xpath",
+      selector: '//*[text()="Invited"]',
     },
   },
   commands: [
     {
-      clickOnManageSection() {
-        return this.waitForElementVisible("@manageMod")
-          .assert.elementPresent("@manageMod")
-          .click("@manageMod")
-          .pause(2000);
-      },
       loginAndVisitPage(browser) {
-        const route = "/media-kloud";
+        const route = "/tmkadmin";
         const appurl = `${config.baseUrl}${route}`;
         browser.url(appurl, () => {
           //browser.log(`Visiting Internet Page: ${route}`)
@@ -84,39 +90,44 @@ module.exports = {
         );
         return this;
       },
-      
-clickOnUser() {
-  return this.waitForElementPresent("@userOption")
-    .assert.elementPresent("@userOption")
-    .click("@userOption")
-    .waitForElementVisible("@totalHeadr")
-    .getText("@totalHeadr", (result) => {
-      console.log(result.value);
+      clickOnManageSection() {
+        return this.waitForElementVisible("@manageMod")
+          .assert.elementPresent("@manageMod")
+          .click("@manageMod")
+          .pause(2000);
+      },
+      clickOnUser() {
+        return this.waitForElementPresent("@userOption")
+         .assert.elementPresent("@userOption")
+         .click("@userOption")
+         .pause(2000)
+         .waitForElementPresent("@totalSection")
+         .waitForElementPresent("@actvSection")
+         .waitForElementPresent("@inactvSection")
+         .waitForElementPresent("@invitedSection")
+         .waitForElementVisible("@totalHeadr")
+         .getText("@totalHeadr", (result) => {
+           console.log(result.value);
     })
-    .assert.elementPresent('@userPageCol1')
-    .getText("@userPageCol1", (result) => {
-      console.log(result.value);
+         .assert.elementPresent('@userPageCol1')
+         .getText("@userPageCol1", (result) => {
+           console.log(result.value);
     })
-    .assert.elementPresent('@userPageCol2')
-    .getText("@userPageCol2", (result) => {
-      console.log(result.value);
+        .assert.elementPresent('@userPageCol2')
+        .getText("@userPageCol2", (result) => {
+          console.log(result.value);
     })
-    .assert.elementPresent('@userPageCol3')
-    .getText("@userPageCol3", (result) => {
-      console.log(result.value);
+       .assert.elementPresent('@userPageCol3')
+       .getText("@userPageCol3", (result) => {
+         console.log(result.value);
     })
-    .assert.elementPresent('@userPageCol4')
-    .waitForElementVisible('@userPageCol4')
-    .getText("@userPageCol4", (result) => {
-      console.log(result.value);
+       .assert.elementPresent('@userPageCol4')
+       .getText("@userPageCol4", (result) => {
+         console.log(result.value);
     })
-    .assert.elementPresent('@userPageCol5')
-    .getText("@userPageCol5", (result) => {
-      console.log(result.value);
-    })
-    .assert.elementPresent('@userPageCol6')
-    .getText("@userPageCol6", (result) => {
-      console.log(result.value);
+       .assert.elementPresent('@userPageCol5')
+       .getText("@userPageCol5", (result) => {
+        console.log(result.value);
     })
 },
       verifySuccessfullNavigationToUserPage() {
