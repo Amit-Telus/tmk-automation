@@ -83,7 +83,7 @@ module.exports = {
       verifySuccessfullNavigationToOrgnztnPage() {
         return this
         .clickOnManageSection()
-        .clickOnOrgnstn();
+        .clickOnOrgnstn()
       },
     },
   ],

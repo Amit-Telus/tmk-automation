@@ -15,9 +15,7 @@ module.exports = {
   //        InviteUserObj.verifySuccessfullSendInvitation()
   //   },
 
-  // "Verify Telus SuperAdmin is successfully edit user": (browser) => {
-  //        browser.page.userModification().verifyUserEditSuccessfully();
-  // },
+ 
 
   // "Verify user is able to Navigate to Role Page successfully and validate all the attributes on Role Management page": (browser) => {
   //        const RolePgeObj = browser.page.rolePage();
@@ -29,17 +27,17 @@ module.exports = {
   //        CreateRoleObj.verifySuccessfullCreationOfRole(browser)
   //  },
 
-  // "Verify user is able to Navigate to Organisation Page successfully and validate header of the page": (browser) => {
-  //        const OrgPgeObj = browser.page.orgPage();
-  //        OrgPgeObj.verifySuccessfullNavigationToOrgnztnPage();
-  //  },
-
-  // "Verify user is able to create a new Organisation": (browser) => {
-  //        const CreateOrgObj = browser.page.createOrg();
-  //        CreateOrgObj.verifySuccessfullCreationOfOrganisation();
-  //  },
-
-  "Verify user is able to Navigate to Live Streams Page successfully and validate all the attributes for selected Active Stream": (browser) => {
-        browser.page.liveStreamPage().verifySuccessfullNavigationToLiveStrmPage(browser);
+  "Verify user is able to Navigate to Organisation Page successfully and validate header of the page": (browser) => {
+         const OrgPgeObj = browser.page.orgPage();
+         OrgPgeObj.verifySuccessfullNavigationToOrgnztnPage();
    },
+
+  "Verify user is able to create a new Organisation": (browser) => {
+         const CreateOrgObj = browser.page.createOrg();
+         CreateOrgObj.verifySuccessfullCreationOfOrganisation(browser);
+   },
+
+  // "Verify user is able to Navigate to Live Streams Page successfully and validate all the attributes for selected Active Stream": (browser) => {
+  //       browser.page.liveStreamPage().verifySuccessfullNavigationToLiveStrmPage(browser);
+  //  },
 };

@@ -53,41 +53,52 @@ module.exports = {
   },
   commands: [
     {
-      clickOnCreateOrgnstn() {
-        return this.waitForElementVisible("@createOrg")
+      clickOnCreateOrgnstn(browser) {
+        
+        browser.refresh()
+        this
+        .waitForElementVisible("@createOrg")
           .assert.elementPresent("@createOrg")
           .click("@createOrg")
-          .pause(2000);
+          .pause(2000)
+          return this
       },
       enterOrgName() {
-        return this.waitForElementVisible("@orgNameFiled")
+        return this
+        .waitForElementVisible("@orgNameFiled")
           .assert.elementPresent("@orgNameFiled")
           .click("@orgNameFiled")
           .setValue("@orgNameFiled", Org+(Math.floor(Math.random() * 6000)))
           .pause(2000);
       },
       selectOwner() {
-        return this.waitForElementVisible("@ownerFiled")
+        return this
+        .waitForElementVisible("@ownerFiled")
           .assert.elementPresent("@ownerFiled")
+          .pause(3000)
           .click("@ownerFiled")
-          .pause(2000);
+          
       },
       enterEmailId() {
-        return this.waitForElementVisible("@ownerEmailFiled")
+        return this
+        .waitForElementVisible("@ownerEmailFiled")
           .assert.elementPresent("@ownerEmailFiled")
+          .pause(2000)
           .click("@ownerEmailFiled")
           .setValue("@ownerEmailFiled", Email)
           .pause(2000);
       },
       enterApiKey() {
-        return this.waitForElementVisible("@apiKey")
+        return this
+        .waitForElementVisible("@apiKey")
           .assert.elementPresent("@apiKey")
           .click("@apiKey")
           .setValue("@apiKey", ApiKey)
           .pause(2000);
       },
       enterBaseCDNPath() {
-        return this.waitForElementVisible("@baseCDNPath")
+        return this
+        .waitForElementVisible("@baseCDNPath")
           .assert.elementPresent("@baseCDNPath")
           .click("@baseCDNPath")
           .setValue("@baseCDNPath", CDNPath)
@@ -112,9 +123,9 @@ module.exports = {
           })
           .click("@closeBtn")
       },
-      verifySuccessfullCreationOfOrganisation() {
+      verifySuccessfullCreationOfOrganisation(browser) {
         return this
-        .clickOnCreateOrgnstn()
+        .clickOnCreateOrgnstn(browser)
         .enterOrgName()
         .selectOwner()
         .enterEmailId()

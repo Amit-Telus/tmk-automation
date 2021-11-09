@@ -26,25 +26,21 @@ module.exports = {
       locateStrategy: "xpath",
       selector: '(//*[@data-testid="fake-input"])[2]',
     },
-    recordngChkbx: {
+    reportsChkbx: {
       locateStrategy: "xpath",
       selector: '(//*[@data-testid="fake-input"])[3]',
     },
-    reportsChkbx: {
+    usersChkbx: {
       locateStrategy: "xpath",
       selector: '(//*[@data-testid="fake-input"])[4]',
     },
-    usersChkbx: {
+    rolesChkbx: {
       locateStrategy: "xpath",
       selector: '(//*[@data-testid="fake-input"])[5]',
     },
-    rolesChkbx: {
-      locateStrategy: "xpath",
-      selector: '(//*[@data-testid="fake-input"])[6]',
-    },
     orgChkbx: {
       locateStrategy: "xpath",
-      selector: '(//*[@data-testid="fake-input"])[7]',
+      selector: '(//*[@data-testid="fake-input"])[6]',
     },
     createBtn: {
       locateStrategy: "xpath",
@@ -56,7 +52,7 @@ module.exports = {
     },
     closeBtn: {
       locateStrategy: "xpath",
-      selector: '(//*[@class="Button__ButtonTextWrapper-sa7xo3-1 gbpwM"])[2]',
+      selector: '//*[@data-testid="close_create_role_successful_modal"]',
     },
   },
   commands: [
@@ -77,7 +73,6 @@ module.exports = {
       clickOnCapabltySelector() {
         return (
           this.waitForElementVisible("@capabltyField")
-            // .assert.elementPresent("@capabltyField")
             .pause(3000)
             .click("@capabltyField")
         );
@@ -87,7 +82,6 @@ module.exports = {
         .waitForElementVisible("@liveStrmChkbx")
         .click("@liveStrmChkbx")
         .click("@monitorChkbx")
-        .click("@recordngChkbx")
         .click("@reportsChkbx")
         .click("@usersChkbx")
         .click("@rolesChkbx")
