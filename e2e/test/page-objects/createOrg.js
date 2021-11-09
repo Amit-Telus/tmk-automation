@@ -2,7 +2,6 @@ const config = require("../config");
 const url = `${config.baseUrl}`;
 const Org='AutomationOrg'
 const Email='AutomationTestscript@telus.com'
-const ApiURL='http://apiurl.com'
 const ApiKey='ED7iQd:ZkVlUG9TNFRaNEd6dzYwS3VrMU9ZaFMySEh4alNHZmQ6YzlmMjVjOWItZGUxOC00MmQ1LTg0MjEtMjRiY2ViMzI4Zjhl'
 const CDNPath='Dummy Path'
 const SecretToken='Dummy token'
