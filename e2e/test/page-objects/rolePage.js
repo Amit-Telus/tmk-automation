@@ -22,15 +22,15 @@ module.exports = {
           },
           rolePageCol2: {
             locateStrategy: "xpath",
-            selector: '(//*[text()="Live Streams"])[3]',
+            selector: '//*[text()="Total Users"]',
           },
           rolePageCol3: {
             locateStrategy: "xpath",
-            selector: '(//*[text()="Monitor"])[3]',
+            selector: '(//*[text()="Live Streams"])[3]',
           },
           rolePageCol4: {
             locateStrategy: "xpath",
-            selector: '//*[text()="Recording"]',
+            selector: '(//*[text()="Monitor"])[3]',
           },
           rolePageCol5: {
             locateStrategy: "xpath",
@@ -47,6 +47,10 @@ module.exports = {
           rolePageCol8: {
             locateStrategy: "xpath",
             selector: '(//*[text()="Organisation"])[3]',
+          },
+          rolePageCol9: {
+            locateStrategy: "xpath",
+            selector: '//*[text()="Action"]',
           },
 
 
@@ -96,6 +100,10 @@ module.exports = {
                     })
                     .assert.elementPresent('@rolePageCol8')
                     .getText("@rolePageCol8", (result) => {
+                      console.log(result.value);
+                    })
+                    .assert.elementPresent('@rolePageCol9')
+                    .getText("@rolePageCol9", (result) => {
                       console.log(result.value);
                     })
             },
